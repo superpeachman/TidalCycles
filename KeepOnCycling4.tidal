@@ -1,8 +1,8 @@
 cps (-1)
 
-cps(1.0)--1が標準で、数値が大きくなるほどテンポが早くなる
+cps(1.0)
 
-bps(120/60)--これでcps(1.0)と同じになります。cpsの方が使いやすそう？
+bps(120/60)
 
 hush
 
@@ -18,11 +18,11 @@ d5 silence
 
 d6 silence
 
-d2 silence >> d3 silence >> d4 silence -- Drum Cut!!!
+d2 silence >> d3 silence >> d4 silence -- Drum Cut
 
 hush
 
---Bass Am Em 32 sounds
+--Bass
 d1 $ slow 8
 $ swingBy (1/6) 16
 $ seqPLoop [
@@ -61,8 +61,6 @@ d1 silence
 
 --Drums
 d2 $ slow 8
--- $ stut 6 0.00000001 0.033
--- $ stut 3 0.00000001 0.032
 $ swingBy (1/6) 16
 $ seqPLoop [
   (0, 4, whenmod 4 3 (const
@@ -110,22 +108,11 @@ $ seqPLoop [
   ) -- B Melo 1
 ]
 
-
-# mymaxdelaytime "2 0 2 0"
-# mydelaytimel "0.18 0 0.18 0"
-# mydelaytimer "0.16 0 0.16 0"
-# mydecaytime "3 0 3 0"
-|+| mymaxdelaytime "0.1666666667"
-# delay "0.3"
-# delaytime "0.6"
-# delayfeedback "0.3"
-
 d2 silence
 
 hush
 
 d3 $ slow 8
--- $ swingBy (1/6) 16
 $ seqPLoop [
   (0, 4, whenmod 4 3 (const
       $ s "~ ~ ~ ~ sn:13 ~ ~ ~ ~ ~ ~ ~ sn:13 ~ ~ ~ ~ [~ ~ timbales_mine:5 timbales_mine:5] timbales_mine:4 timbales_mine:4 [~ ~ timbales_mine:5 timbales_mine:5] timbales_mine:5 timbales_mine:5 ~ ~ ~ ~ ~ sn:13 ~ [timbales_mine:4, 808cy:5] ~"
@@ -197,14 +184,10 @@ $ seqPLoop [
   ) -- B Melo 1
 ]
 
-|+| gate "1"
-
-d2 silence >> d3 silence >> d4 silence -- Drum Cut!!!
-
+d2 silence >> d3 silence >> d4 silence -- Drum Cut
 
 --Key 1
 d5 $ slow 8
--- $ stut 3 0.001 0.5
 $ swingBy (1/6) 16
 $ seqPLoop [
   (0, 4,
@@ -296,8 +279,6 @@ d8 silence
 
 --Melo
 d8 $ slow 8
--- $ stut 6 0.00001 0.1
--- $ whenmod 8 4 (stut 6 0.00001 0.1)
 $ swingBy (1/6) 16
 $ seqPLoop [
   (0, 4, whenmod 4 3 (const
@@ -372,15 +353,4 @@ $ seqPLoop [
 
 d8 silence
 
-|+| mymaxdelaytime "0.6"
-|+| mydelaytimel "0.3"
-|+| mydelaytimer "0.4"
-|+| mydecaytime "80"
-
-
 hush
-
-# cut "1"
-
-
-d8 silence
