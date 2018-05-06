@@ -28,34 +28,28 @@ $ swingBy (1/6) 16
 $ seqPLoop [
   (0, 4, whenmod 4 3 (const
       $ n "c3 ~ ~ ~ ~ ~ ~ ~ ~ ~ e3 d3 c3 ~ b2 ~ c3 ~ ~ ~ ~ ~ ~ ~ a4 g4 ~ ~ e4 g4 a4 ~"
-      # s "superbass"
       # sustain "1.2 0 0 0 0 0 0 0 0 0 0.8 0.8 0.8 0 0.8 0 1.2 0 0 0 0 0 0 0 0.8 0.8 0 0 0.8 0.8 0.8 0"
-      # gain "0.9"
     ) -- Break End
     $ n "c3 ~ ~ ~ ~ ~ ~ ~ ~ ~ e3 d3 c3 ~ b2 ~ c3 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ a2 ~ b2 ~"
-    # s "superbass"
     # sustain "1.2 0 0 0 0 0 0 0 0 0.8 0.8 0.8 0.8 0 0.8 0 1.2 0 0 0 0 0 0 0 0 0 0 0 0.8 0 0.8 0"
-    # gain "0.9"
   ), -- Intro Break
   (4, 6, n "a2 ~ e3 e3 e3 e3 e3 e3 e3 ~ ~ ~ e2 ~ g2 ~ a2 ~ e3 e3 e3 e3 e3 e3 e3 ~ ~ ~ e2 ~ g2 ~"
     # sustain "0.8 0 0.8 0.8 0.8 0.8 0.8 0.8 1.2 0 0 0 0.8 0 0.8 0 1.2 0 0.8 0.8 0.8 0.8 0.8 0.8 1.2 0 0 0 0.8 0 0.8 0"
-    # gain "0.9"
-    # s "superbass"
   ), -- A Melo
   (6, 8, whenmod 2 1 (const
       $ n "a2 ~ e3 e3 e3 e3 e3 e3 ~ ~ g2 g2 d3 d3 d3 d3 ~ ~ e3 e3 e3 e3 e3 e3 e3 ~ ~ ~ e2 ~ g2 ~"
-      # s "superbass"
       # sustain "0.8 0 0.8 0.8 0.8 0.8 0.8 0.8 0 0 0.8 0.8 0.8 0.8 0.8 0.8 0 0 0.8 0.8 0.8 0.8 0.8 0.8 1.2 0 0 0 0.8 0 0.8 0"
-      # gain "0.9"
     ) -- B Melo 2
     $ n "d3 ~ ~ ~ a3 ~ ~ ~ ~ f3 f3 f3 a2 ~ ~ ~ d3 ~ ~ ~ a3 ~ ~ ~ ~ f3 f3 f3 a2 ~ ~ ~"
     # sustain "1.2 0 0 0 1.2 0 0 0 0 0.8 0.8 0.8 1.2 0 0 0 1.2 0 0 0 1.2 0 0 0 0 0.8 0.8 0.8 1.2 0 0 0"
-    # gain "0.9"
-    # s "superbass"
   ) -- B Melo 1
 ]
+# gain "0.9"
+# s "superbass"
 
-# cutoff 1300
+# shape 0.01
+# gate 1
+# cutoff 2000
 
 d1 silence
 
@@ -64,49 +58,70 @@ d2 $ slow 8
 $ swingBy (1/6) 16
 $ seqPLoop [
   (0, 4, whenmod 4 3 (const
-      $ s "[hh hh hh hh hh hh hh hh] [hh hh hh hh hh hh hh hh] [hh ~ ~ ~ ~ ~ ~ ~] [hh hh hh hh ~ ~ ~ ~]"
-      -- # speed "[1.7]*8"
+      $ s "[hc hc hc hc hc hc hc hc] [hc hc hc hc hc hc hc hc] [hc ~ ~ ~ ~ ~ ~ ~] [hc hc hc hc ~ ~ ~ ~]"
       # gain "[0.7 0.4 0.8 0.4 0.7 0.4 0.8 0.4]*8"
-      # n "0"
+      |-| gain "0.15"
+      # mymaxdelaytime "0.2"
+      # mydelaytimel "0.15"
+      # mydelaytimer "0.16"
+      # mydecaytime "0.1"
+      # mydelaywet "0.005"
       -- # cutoff (scale 6000 9000 $ slow 4 $ sine)
       -- # resonance "0.3"
     ) -- Break End
-    $ s "hh*32"
-    -- # speed "[1.7]*8"
+    $ s "hc*32"
     # gain "[0.7 0.4 0.8 0.4 0.7 0.4 0.8 0.4]*8"
-    # n "0"
+    |-| gain "0.15"
+    # mymaxdelaytime "0.2"
+    # mydelaytimel "0.15"
+    # mydelaytimer "0.16"
+    # mydecaytime "0.1"
+    # mydelaywet "0.005"
     -- # cutoff (scale 6000 9000 $ slow 4 $ sine)
     -- # resonance "0.3"
   ),  -- Intro Break
   (4, 6,
-    s "hh*32"
+    s "hc*32"
     -- # speed "[1.7]*8"
     # gain "[0.7 0.4 0.8 0.4 0.7 0.4 0.8 0.4]*8"
+    |-| gain "0.15"
     -- |-| gain "0.1"
-    # n "0"
     # mymaxdelaytime "0.2"
-    # mydelaytimel "0.18"
-    # mydelaytimer "0.18"
+    # mydelaytimel "0.15"
+    # mydelaytimer "0.16"
     # mydecaytime "0.1"
+    # mydelaywet "0.08"
     -- # cutoff (scale 6000 12000 $ slow 8 $ sine)
     -- # resonance "0.3"
   ), -- A Melo
   (6, 8, whenmod 2 1 (const
-      $ s "[hh hh hh hh hh hh hh hh] [hh hh hh hh hh hh hh hh] [hh hh hh hh hh hh hh hh] [hh ~ ~ ~ ~ ~ ~ ~]"
+      $ s "[hc hc hc hc hc hc hc hc] [hc hc hc hc hc hc hc hc] [hc hc hc hc hc hc hc hc] [hc ~ ~ ~ ~ ~ ~ ~]"
       -- # speed "[1.7]*8"
       # gain "[0.7 0.4 0.8 0.4 0.7 0.4 0.8 0.4]*8"
-      # n "0"
+      |-| gain "0.15"
     ) -- B Melo 2
-    $ s "hh*32"
+    $ s "hc*32"
     -- # speed "[1.7]*8"
     # gain "[0.7 0.4 0.8 0.4 0.7 0.4 0.8 0.4]*8"
-    # n "0"
-    # mymaxdelaytime "0.4"
-    # mydelaytimel "0.18"
-    # mydelaytimer "0.18"
-    # mydecaytime "0.4"
+    |-| gain "0.15"
+    # mymaxdelaytime "0.2"
+    # mydelaytimel "0.15"
+    # mydelaytimer "0.16"
+    # mydecaytime "0.1"
+    # mydelaywet "0.08"
   ) -- B Melo 1
 ]
+# n 2
+# speed "0.92"
+# shape 0.2
+# cut 1
+# gate 1
+# mythresh "0.3"
+# myslopeBelow "0.5"
+# myslopeAbove "0.3"
+# myclampTime "0"
+# myrelaxTime "0.02"
+
 
 d2 silence
 
@@ -115,41 +130,51 @@ hush
 d3 $ slow 8
 $ seqPLoop [
   (0, 4, whenmod 4 3 (const
-      $ s "~ ~ ~ ~ sn:13 ~ ~ ~ ~ ~ ~ ~ sn:13 ~ ~ ~ ~ [~ ~ timbales_mine:5 timbales_mine:5] timbales_mine:4 timbales_mine:4 [~ ~ timbales_mine:5 timbales_mine:5] timbales_mine:5 timbales_mine:5 ~ ~ ~ ~ ~ sn:13 ~ [timbales_mine:4, 808cy:5] ~"
+      $ s "~ ~ ~ ~ sn_custom ~ ~ ~ ~ ~ ~ ~ sn_custom ~ ~ ~ ~ [~ ~ timbales_mine:5 timbales_mine:5] timbales_mine:4 timbales_mine:4 [~ ~ timbales_mine:5 timbales_mine:5] timbales_mine:5 timbales_mine:5 ~ ~ ~ ~ ~ sn_custom ~ [timbales_mine:4, 808cy:5] ~"
       # gain "0 0 0 0 0.8 0 0 0 0 0 0 0 0.8 0 0 0 0 [~ ~ 0.6 0.6] 1 1 [~ ~ 0.6 0.6] 1 1 0 0 0 0 0 0.8 0 1 0"
+      # myreverbpredelaytime "0.00001"
+      # myreverbdepth "0.008 0.008 0.008 [0.008 0.008 0.1]"
     ) -- Break End
-    $ s "~ ~ ~ ~ sn:13 ~ ~ ~ ~ ~ ~ ~ sn:13 ~ ~ ~ ~ ~ ~ ~ sn:13 ~ ~ ~ ~ ~ ~ ~ sn:13 ~ sn:13/2 ~"
+    $ s "~ ~ ~ ~ sn_custom ~ ~ ~ ~ ~ ~ ~ sn_custom ~ ~ ~ ~ ~ ~ ~ sn_custom ~ ~ ~ ~ ~ ~ ~ sn_custom ~ sn_custom/2 ~"
     # gain "0 0 0 0 0.8 0 0 0 0 0 0 0 0.8 0 0 0 0 0 0 0 0.8 0 0 0 0 0 0 0 0.8 0 0.8 0"
-    # cutoff (scale 800 2600 $ slow "0.2" $ sine)
+    # cutoff (scale 800 2300 $ slow "0.2" $ sine)
     # resonance "0.3"
+    # myreverbpredelaytime "0.00001"
+    # myreverbdepth "0.008"
     -- # crush "13"
   ),
   (4, 6,
     -- every 2 (stut 5 0.0001 0.7)
     -- $ every 2 (# run 2)
     -- $ stut 5 0.0001 0.3
-    s "~ ~ ~ ~ sn:13 ~ ~ ~ ~ ~ ~ ~ sn:13 ~ ~ ~ ~ ~ ~ ~ sn:13 ~ ~ ~ [~ ~ ~] [timbales_mine:5 timbales_mine:5 timbales_mine:5] ~ ~ timbales_mine:5 ~ ~ ~"
+    s "~ ~ ~ ~ sn_custom ~ ~ ~ ~ ~ ~ ~ sn_custom ~ ~ ~ ~ ~ ~ ~ sn_custom ~ ~ ~ [~ ~ ~] [timbales_mine:5 timbales_mine:5 timbales_mine:5] ~ ~ timbales_mine:5 ~ ~ ~"
     # gain "0 0 0 0 0.8 0 0 0 0 0 0 0 0.8 0 0 0 0 0 0 0 0.8 0 0 0 0 [0.6 0.7 0.9] 0 0 1 0 0 0"
-    # cutoff (scale 800 2600 $ slow "0.2" $ sine)
-    # resonance "0.3"
+    # cutoff (scale 800 2300 $ slow "0.2" $ sine)
+    # resonance "0.2"
+    # myreverbpredelaytime "0.00001"
+    # myreverbdepth "0.4 0.8 0.2 0.1"
   ), -- A Melo
   (6, 8, whenmod 2 1 (const
-      $ s "~ ~ ~ ~ sn:13 ~ ~ ~ ~ ~ ~ ~ sn:13 ~ ~ ~ ~ ~ ~ ~ sn:13 ~ ~ ~ ~ [~ ~ timbales_mine:5 timbales_mine:5] timbales_mine:4 timbales_mine:4 [~ ~ timbales_mine:5 timbales_mine:5] timbales_mine:4 [timbales_mine:4, 808cy:5] ~"
+      $ s "~ ~ ~ ~ sn_custom ~ ~ ~ ~ ~ ~ ~ sn_custom ~ ~ ~ ~ ~ ~ ~ sn_custom ~ ~ ~ ~ [~ ~ timbales_mine:5 timbales_mine:5] timbales_mine:4 timbales_mine:4 [~ ~ timbales_mine:5 timbales_mine:5] timbales_mine:4 [timbales_mine:4, 808cy:5] ~"
       # gain "0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 [~ ~ 0.6 0.6] 1 1 [~ ~ 0.6 0.6] 1 1 0"
+      # myreverbpredelaytime "0.00001"
+      # myreverbdepth "0.008 0.008 0.008 [0.008 0.008 0.1]"
       -- # cutoff (scale 800 2600 $ slow "0.2" $ sine)
       -- # resonance "0.4"
     ) -- B Melo 2
-    $ s "~ ~ ~ ~ sn:13 ~ ~ timbales_mine:5 ~ ~ ~ ~ sn:13 ~ ~ ~ ~ ~ ~ ~ sn:13 ~ ~ timbales_mine:5 ~ ~ ~ ~ sn:13 ~ ~ ~"
+    $ s "~ ~ ~ ~ sn_custom ~ ~ timbales_mine:5 ~ ~ ~ ~ sn_custom ~ ~ ~ ~ ~ ~ ~ sn_custom ~ ~ timbales_mine:5 ~ ~ ~ ~ sn_custom ~ ~ ~"
     # gain "0 0 0 0 0.8 0 0 0.7 0 0 0 0 0.8 0 0 0 0 0 0 0 0.8 0 0 0.7 0 0 0 0 0.8 0 0 0"
     # cutoff (scale 800 2600 $ slow "0.2" $ sine)
     # resonance "0.3"
+    # myreverbpredelaytime "0.00001"
+    # myreverbdepth "0.008"
   ) -- B Melo 1
 ]
 
 d3 silence
 
 d4 $ slow 8
-$ swingBy (1/6) 16
+-- $ swingBy (1/6) 16
 $ seqPLoop [
   (0, 4, whenmod 4 3 (const
       $ every 2 (const
@@ -214,6 +239,7 @@ $ seqPLoop [
     # mydelaytimel "0.18 0 0.18 0"
     # mydelaytimer "0.16 0 0.16 0"
     # mydecaytime "3 0 3 0"
+    # mydelaywet "0.8"
   ), -- A Melo
   (6, 8, whenmod 2 1 (const
       -- $ stut 5 0.0001 0.3
@@ -225,6 +251,7 @@ $ seqPLoop [
       # mydelaytimel "0.18 0.18 0.18 0"
       # mydelaytimer "0.16 0.16 0.16 0"
       # mydecaytime "3 3 3 0"
+      # mydelaywet "0.8"
     ) -- B Melo 2
     -- $ every 2 (echo (negate 5/16))
     $ n "[~ ~ [d4,f4,a4] ~ [d6,f6,a6] ~ [d4,f4,a4] ~]*8"
@@ -234,29 +261,48 @@ $ seqPLoop [
   ) -- B Melo 1
 ]
 
+# bandf 0.1
+# bandq 0.1
+
 d5 silence
 
 -- Key 2
 d6 $ slow 8
 $ swingBy (1/6) 16
 $ seqPLoop [
-  (0, 4,
-    -- stut 8 0.00001 0.1
-    n "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ [a5, c6, e6] [a5, c6, e6] ~ [a5, c6, e6] [a5, c6, e6] ~"
+  (0, 4,whenmod 2 1 (const
+      $ n "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ [a5, c6, e6] [a5, c6, e6] ~ [a5, c6, e6] [a5, c6, e6] ~"
+      # gain "0.6"
+      # sustain "0 0 0 [0.3 2.0]"
+      # s "superpiano"
+      # mymaxdelaytime "0 0 0 [0 3]"
+      # mydelaytimel "0 0 0 [0 0.18]"
+      # mydelaytimer "0 0 0 [0 0.16]"
+      # mydecaytime "0 0 0 [0 5]"
+      # mydelaywet "0.8"
+    )
+    $ stack [
+      n "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ [a5, c6, e6] [a5, c6, e6] ~ [a5, c6, e6] [a5, c6, e6] ~"
+      # gain "0.6"
+      # sustain "0 0 0 [0.3 2.0]",
+      n "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ a2 a2 a2 ~ ~ ~ ~ ~"
+      # gain "0.76"
+      # sustain "0 0 0 [0.4 1.90 ~ ~]"
+      # mymaxdelaytime "0 0 0 [4 0 0]"
+      # mydelaytimel "0 0 0 [0.04 0 0]"
+      # mydelaytimer "0 0 0 [0.12 0 0]"
+      # mydecaytime "0 0 0 2"
+      # mydelaywet "0.8"
+    ]
     # s "superpiano"
-    # sustain "0 0 0 [0.3 2.0]"
-    # gain "0.6"
-    # mymaxdelaytime "0 0 0 [0 3]"
-    # mydelaytimel "0 0 0 [0 0.18]"
-    # mydelaytimer "0 0 0 [0 0.16]"
-    # mydecaytime "0 0 0 [0 5]"
   ),
   (4, 6,
+    stack[
+      n "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ [a5, c6, e6] [a5, c6, e6] ~ [a5, c6, e6] [a5, c6, e6] ~" # gain "0.6" # s "superpiano"
+    ]
     -- stut 8 0.00001 0.1
-    n "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ [a5, c6, e6] [a5, c6, e6] ~ [a5, c6, e6] [a5, c6, e6] ~"
+    -- n "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ [a5, c6, e6] [a5, c6, e6] ~ [a5, c6, e6] [a5, c6, e6] ~"
     # sustain "0.2"
-    # gain "0.6"
-    # s "superpiano"
   ), -- A Melo
   (6, 8, whenmod 2 1 (const
       $ n "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ [a5, c6, e6] [a5, c6, e6] ~ [a5, c6, e6] [a5, c6, e6] ~"
@@ -298,7 +344,6 @@ $ seqPLoop [
         # gain "0.4"
       ]
       # s "superhammond"
-      # voice "0"
       # sustain "1.8 0 0 0 0 0 0 0 0 0.4 0.4 0.4 0.4 0 0.4 0 1.8 0 0 0 0 0 0 0 0 0 0 0 0.6 0 0.6 0"
     ) -- Break End
     -- $ stut 0 0.00001 0.1
@@ -317,7 +362,6 @@ $ seqPLoop [
       # gain "0.4"
     ]
     # s "superhammond"
-    # voice "0"
     # sustain "1.8 0 0 0 0 0 0 0 0 0.4 0.4 0.4 0.4 0 0.4 0 1.8 0 0 0 0 0 0 0 0 0 0 0 0.6 0 0.6 0"
   ), -- Break
   (4, 6,
@@ -325,7 +369,6 @@ $ seqPLoop [
     # sustain "0.2"
     # gain "0.7"
     # s "superhammond"
-    # voice "0"
   ), -- A Melo
   (6, 8, whenmod 2 1 (const
       $ stack [
@@ -340,16 +383,18 @@ $ seqPLoop [
         # gain "0.3"
       ]
       # s "superhammond"
-      # voice 0
       # sustain "1.8 0 0 0 0 0 0 0 0 0.4 0.4 0.4 0.4 0 0.4 0 1.8 0 0 0 0 0 0 0 0 0 0 0 0.4 0 0.4 0"
     ) -- B Melo 2
     $ n "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ [a5, c5, e5] [a5, c5, e5] ~ [a5, c5, e5] [a5, c5, e5] ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~"
     # sustain "0.2"
     # gain "0.7"
     # s "superhammond"
-    # voice "0"
   ) -- B Melo 1
 ]
+# voice "6"
+
+# crush 3
+
 
 d8 silence
 
